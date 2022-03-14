@@ -1,6 +1,9 @@
 
 from abc import ABC, abstractmethod
 
+from entities.customer_class_info import Customer
+
+
 class CustomerDAOInterface(ABC):
 
     @abstractmethod

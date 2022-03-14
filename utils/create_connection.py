@@ -1,24 +1,21 @@
 
 import os
-
 from psycopg import connect, OperationalError
 
 def create_connection():
     try:
-
-     conn = connect(
-
-        host=os.environ.get("Host"),
-        dbname=os.environ.get("DB"),
-        user=os.environ.get("USER"),
-        password=os.environ.get("PASSWORD"),
-        port=os.environ.get("PORT")
-
+        conn = connect(
+            host=os.environ.get("Host"),
+            dbname=os.environ.get("DB"),
+            user=os.environ.get("USER"),
+            password=os.environ.get("PASSWORD"),
+            port=os.environ.get("PORT")
          )
 
-         return conn
+        return conn
 
-    except OperationalError:
+    except OperationalError as oe:
+        print(oe)
 
         return "Could not connect to the database"
 

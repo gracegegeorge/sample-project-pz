@@ -1,5 +1,6 @@
 from data_access_layer.customer_data_access.customer_dao_interface import CustomerDAOInterface
 from entities.customer_class_info import Customer
+from utils.create_connection import connection
 
 
 class CustomerDAOImp(CustomerDAOInterface):
@@ -15,7 +16,7 @@ class CustomerDAOImp(CustomerDAOInterface):
         # assign it to my customer obj
         # return customer obj
 
-        sql = "Insert into customers values(default, %s, %s returning customer_id"
+        sql = "INSERT INTO customers values (default, %s, %s) returning customer_id"
         cursor = connection.cursor()
         cursor.execute(sql, (customer_obj.first_name, customer_obj.last_name))
         connection.commit()
@@ -30,7 +31,7 @@ class CustomerDAOImp(CustomerDAOInterface):
         cursor = connection.cursor()
         cursor.execute(sql, [customer_id])
         connection.commit()
-        if cursor.rocount != 0:
+        if cursor.rowcount != 0:
             return True
         else:
             return False
