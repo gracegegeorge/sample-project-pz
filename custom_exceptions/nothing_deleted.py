@@ -1,0 +1,3 @@
+
+class NothingDeleted(Exception):
+    pass

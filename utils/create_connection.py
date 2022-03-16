@@ -1,6 +1,6 @@
-
 import os
 from psycopg import connect, OperationalError
+
 
 def create_connection():
     try:
@@ -10,7 +10,7 @@ def create_connection():
             user=os.environ.get("USER"),
             password=os.environ.get("PASSWORD"),
             port=os.environ.get("PORT")
-         )
+        )
 
         return conn
 
@@ -19,10 +19,7 @@ def create_connection():
 
         return "Could not connect to the database"
 
+
 connection = create_connection()
 
 print(connection)
-
-
-
-

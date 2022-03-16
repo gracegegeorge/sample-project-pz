@@ -1,0 +1,3 @@
+
+class ConnectionProblem(Exception):
+    pass
